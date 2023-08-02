@@ -7,7 +7,7 @@ type Props = {};
 
 const Login = (props: Props) => {
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-evenly mt-10">
       <Image src={LoginPic} alt="login" width={400} height={500} />
       <div className="bg-white  border-gray-500 shadow-xl">
         <h2 className="text-center text-orange-500 font-semibold text-3xl p-1">
@@ -40,16 +40,16 @@ const Login = (props: Props) => {
             className="w-full mb-1 border-gray-500 border-2 p-1 "
             type="submit"
           >
-            Forgot Password
+            <Link href="/pages/forgotPassword"> Forgot Password</Link>
           </button>
           <p className="text-center m-4">-- or --</p>
         </form>
         <button className="flex w-full mb-1 border-gray-500 border-2 bg-orange-500 justify-center p-1">
           <FaGoogle color="#fff" /> Login With Google
         </button>
-        <span className="flex justify-center">
+        <span className="flex justify-center text-gray-600">
           <p>Dont have an account?</p>
-          <Link href="/register">Register</Link>
+          <Link href="/pages/register">Register</Link>
         </span>
       </div>
     </div>

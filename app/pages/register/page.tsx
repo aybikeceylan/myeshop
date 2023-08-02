@@ -1,13 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGoogle } from "react-icons/fa";
 import RegisterPic from "./register.png";
 type Props = {};
 
 const Login = (props: Props) => {
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-evenly mt-10">
       <div className="bg-white  border-gray-500 shadow-xl">
         <h2 className="text-center text-orange-500 font-semibold text-3xl p-1">
           Register
@@ -44,7 +43,7 @@ const Login = (props: Props) => {
 
         <span className="flex justify-center text-gray-600">
           <p>Already an account?</p>
-          <Link href="/register">Login</Link>
+          <Link href="/pages/login">Login</Link>
         </span>
       </div>
       <Image src={RegisterPic} alt="login" width={400} height={500} />
