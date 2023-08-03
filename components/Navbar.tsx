@@ -1,10 +1,25 @@
 import Link from "next/link";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { auth } from "@/firebase/config";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const router = useRouter();
+  const logoutUser = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("LogOut Succesfully...");
+        router.replace("/pages/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <nav className="flex bg-slate-400 justify-between p-5 ">
       <div>
@@ -27,10 +42,20 @@ const Navbar = (props: Props) => {
         >
           My Orders
         </Link>
+        <Link
+          href="/pages/"
+          className="hover:bg-sky-400 p-2 rounded-md"
+          onClick={logoutUser}
+        >
+          LogOut
+        </Link>
         <Link href="/pages/login" className="hover:bg-sky-400 p-2 rounded-md">
           Login
         </Link>
-        <Link href="/pages/login" className="hover:bg-sky-400 p-2 rounded-md">
+        <Link
+          href="/pages/register"
+          className="hover:bg-sky-400 p-2 rounded-md"
+        >
           Register
         </Link>
         <Link
