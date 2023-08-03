@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 import LoginPic from "./login.png";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/firebase/config";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -27,10 +28,22 @@ const Login = (props: Props) => {
         const user = userCredential.user;
         setİsLoading(false);
         toast.success("Login Successful...");
-        router.replace("/pages/");
+        router.replace("/pages/home");
       })
       .catch((error) => {
         setİsLoading(false);
+        toast.error(error.message);
+      });
+  };
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        toast.success("login Succesfully...");
+        router.replace("/");
+      })
+      .catch((error) => {
         toast.error(error.message);
       });
   };
@@ -78,7 +91,10 @@ const Login = (props: Props) => {
             </button>
             <p className="text-center m-4">-- or --</p>
           </form>
-          <button className="flex w-full mb-1 border-gray-500 border-2 bg-orange-500 justify-center p-1">
+          <button
+            className="flex w-full mb-1 border-gray-500 border-2 bg-orange-500 justify-center p-1"
+            onClick={signInWithGoogle}
+          >
             <FaGoogle color="#fff" /> Login With Google
           </button>
           <span className="flex justify-center text-gray-600">
