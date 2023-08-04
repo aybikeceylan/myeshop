@@ -18,7 +18,7 @@ const Navbar = (props: Props) => {
   const [displayName, setDisplayName] = useState<any | null>(null);
   const dispatch = useDispatch();
   const router = useRouter();
-
+  console.log("Navbar rendered");
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       interface user {
