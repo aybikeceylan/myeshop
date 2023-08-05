@@ -1,5 +1,6 @@
 "use client";
-import { getCategory } from "@/app/redux/features/categorySlice";
+import { getCategory, setChoosen } from "@/app/redux/features/categorySlice";
+import { getFilter } from "@/app/redux/features/filterSlice";
 import { RootState } from "@/app/redux/store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import React, { useEffect } from "react";
@@ -15,6 +16,12 @@ const Categories = () => {
   }, [dispatch]);
   console.log(categoryList);
 
+  const handleCategory = (e: any) => {
+    e.preventDefault();
+    dispatch(setChoosen(e.target.value));
+    dispatch(getFilter());
+  };
+
   return (
     <div className="text-black">
       <div className="flex flex-col items-center ">
@@ -24,7 +31,8 @@ const Categories = () => {
             <button
               key={index}
               className="px-4 py-2 border rounded hover:bg-gray-200 w-full bg-yellow-100"
-              // onClick={() => handleCategoryClick(category)}
+              value={category}
+              onClick={() => handleCategory(category)}
             >
               {category}
             </button>

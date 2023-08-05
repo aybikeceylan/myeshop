@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 type Props = {};
 
 const SearchBar = (props: Props) => {
+  const [search, setSearch] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
   console.log("search component");
   return (
     <div className="text-black border-gray shadow-lg rounded-lg flex w-1000px justify-between mb-5">
@@ -12,8 +18,13 @@ const SearchBar = (props: Props) => {
             type="text"
             placeholder="Search..."
             className="flex-1 px-2 py-1 focus:outline-none"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-orange-600">
+          <button
+            className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-orange-600"
+            onSubmit={handleSubmit}
+          >
             Search
           </button>
         </div>
@@ -22,9 +33,9 @@ const SearchBar = (props: Props) => {
         <div className="flex items-center space-x-4">
           <span className="text-gray-600">Sort by:</span>
           <select className="border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300">
-            <option value="latest">Latest</option>
-            <option value="popular">Popular</option>
-            <option value="alphabetical">Alphabetical</option>
+            <option value={"Featured"}>Featured</option>
+            <option value={"Price: Low to High"}>Price: Low to High</option>
+            <option value={"Price: High to Low"}>Price: High to Low</option>
           </select>
         </div>
       </div>
