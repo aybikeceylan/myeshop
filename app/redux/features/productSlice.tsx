@@ -25,9 +25,8 @@ export const getProduct = createAsyncThunk(
     const url = `https://fakestoreapi.com/products`;
     try {
       const { data } = await axios(url);
-
-      return data;
       console.log(data);
+      return data;
     } catch (error) {
       return rejectWithValue("Something went wrong");
     }

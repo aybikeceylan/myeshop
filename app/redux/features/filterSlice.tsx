@@ -21,26 +21,30 @@ export const getFilter = createAsyncThunk(
 
   async (thunkAPI, { rejectWithValue }) => {
     const selected = store.getState().category.choosen;
+    console.log(selected);
     //! asyn callback function
     const url = `https://fakestoreapi.com/products/category/${selected}`;
 
     try {
       const { data } = await axios(url);
-
-      return data;
       console.log(data);
+      return data;
     } catch (error) {
       return rejectWithValue("Something went wrong");
     }
   }
 );
 
-const categorySlice = createSlice({
+const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
     setFind: (state, { payload }) => {
       state.find = payload;
+    },
+    setFilteredList: (state, { payload }) => {
+      state.filteredList = payload;
+      console.log(state.filteredList);
     },
   },
   extraReducers: (builder) => {
@@ -59,7 +63,6 @@ const categorySlice = createSlice({
       });
   },
 });
+export const { setFind } = filterSlice.actions;
 
-export const { setFind } = categorySlice.actions;
-
-export default categorySlice.reducer;
+export default filterSlice.reducer;

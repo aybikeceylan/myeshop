@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Categories = () => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { categoryList } = useSelector((state: RootState) => state.category);
+  const { filteredList } = useSelector((state: RootState) => state.filter);
   console.log("category component");
 
   useEffect(() => {
@@ -16,11 +17,11 @@ const Categories = () => {
   }, [dispatch]);
   console.log(categoryList);
 
-  const handleCategory = (e: any) => {
-    e.preventDefault();
-    dispatch(setChoosen(e.target.value));
+  const handleCategory = (category: any) => {
+    dispatch(setChoosen(category));
     dispatch(getFilter());
   };
+  console.log(filteredList);
 
   return (
     <div className="text-black">
