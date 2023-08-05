@@ -5,15 +5,15 @@ type Props = {};
 const SearchBar = (props: Props) => {
   console.log("search component");
   return (
-    <div className="text-black bg-gray-400 flex w-1000px">
-      <div>
+    <div className="text-black border-gray shadow-lg rounded-lg flex w-1000px justify-between mb-5">
+      <div className="w-3/5">
         <div className="flex items-center border rounded-lg p-2">
           <input
             type="text"
             placeholder="Search..."
             className="flex-1 px-2 py-1 focus:outline-none"
           />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600">
+          <button className="bg-orange-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-orange-600">
             Search
           </button>
         </div>

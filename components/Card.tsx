@@ -1,28 +1,42 @@
-// useEffect doğru şekilde import edilmeli
-import { useDispatch, useSelector } from "react-redux"; // useSelector eklenmeli
-import { setProduct } from "@/app/redux/features/productSlice";
-
 import Image from "next/image";
 import React from "react";
+import { useDispatch } from "react-redux"; // Removed unnecessary import
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "@/app/redux/store";
 
-const Card = () => {
-  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-  const { productList } = useSelector((state: RootState) => state.product);
-  // const productList = useSelector(selectProduct); // Ürünü seçmek için useSelector kullanılmalı
+interface CardProps {
+  item: {
+    image: any;
+    title: any;
+    price: any;
+  };
+  index: number;
+}
 
-  dispatch(setProduct({}));
-  console.log(productList);
+const Card: React.FC<CardProps> = ({ item, index }) => {
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 
   console.log("card component");
 
   return (
-    <div className="text-black bg-gray-500">
-      {/* <Image /> */}
-      <div>price</div>
-      <div>desc</div>
-      <button>Add to Cart</button>
+    <div
+      className="text-black w-44 bg-yellow-100 rounded-md shadow-md"
+      key={index}
+    >
+      <Image
+        src={item?.image}
+        alt={item?.title}
+        width={175}
+        height={175}
+        className="h-52"
+      />
+      <div className="font-bold text-orange-500 text-center h-5">
+        {item?.price}TL
+      </div>
+      <div className="text-xs h-14">{item?.title}</div>
+      <button className="bg-orange-500 rounded-md p-2 w-full h-10">
+        Add to Cart
+      </button>
     </div>
   );
 };

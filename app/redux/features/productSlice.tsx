@@ -25,7 +25,9 @@ export const getProduct = createAsyncThunk(
     const url = `https://fakestoreapi.com/products`;
     try {
       const { data } = await axios(url);
+
       return data;
+      console.log(data);
     } catch (error) {
       return rejectWithValue("Something went wrong");
     }
@@ -53,6 +55,7 @@ const productSlice = createSlice({
       })
       .addCase(getProduct.fulfilled, (state, { payload }) => {
         state.productList = payload;
+        console.log(payload);
         state.loading = false;
       })
       .addCase(getProduct.rejected, (state, { payload }) => {

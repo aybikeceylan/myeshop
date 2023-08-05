@@ -70,17 +70,20 @@ const Navbar = (props: Props) => {
       });
   };
   return (
-    <nav className="flex bg-slate-400 justify-between p-5 ">
+    <nav className="flex bg-amber-500 justify-between p-5 ">
       <div>
         <Link href="/" className="text-3xl text-red-600 font-semibold">
           <span className="text-white">e</span>Shop
         </Link>
       </div>
       <div className="flex gap-3 ">
-        <Link href="/" className="hover:bg-sky-400 p-2 rounded-md">
+        <Link href="/" className="hover:bg-amber-300 p-2 rounded-md">
           Home
         </Link>
-        <Link href="/pages/contact" className="hover:bg-sky-400 p-2 rounded-md">
+        <Link
+          href="/pages/contact"
+          className="hover:bg-amber-300 p-2 rounded-md"
+        >
           Contact us
         </Link>
       </div>
@@ -94,29 +97,29 @@ const Navbar = (props: Props) => {
 
         <Link
           href="/pages/orderDetails"
-          className="hover:bg-sky-400 p-2 rounded-md"
+          className="hover:bg-amber-300 p-2 rounded-md"
         >
           My Orders
         </Link>
         <Link
           href="/"
-          className="hover:bg-sky-400 p-2 rounded-md"
+          className="hover:bg-amber-300 p-2 rounded-md"
           onClick={logoutUser}
         >
           LogOut
         </Link>
-        <Link href="/pages/login" className="hover:bg-sky-400 p-2 rounded-md">
+        <Link href="/pages/login" className="hover:bg-amber-300 p-2 rounded-md">
           Login
         </Link>
         <Link
           href="/pages/register"
-          className="hover:bg-sky-400 p-2 rounded-md"
+          className="hover:bg-amber-300 p-2 rounded-md"
         >
           Register
         </Link>
         <Link
           href="/pages/chart"
-          className="hover:bg-sky-400 p-2 rounded-md flex"
+          className="hover:bg-amber-300 p-2 rounded-md flex"
         >
           Chart
           <FaShoppingCart size={15} />
