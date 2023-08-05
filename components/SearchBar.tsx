@@ -5,9 +5,29 @@ type Props = {};
 const SearchBar = (props: Props) => {
   console.log("search component");
   return (
-    <div>
-      <div>SearchBox</div>
-      <div>Sort by</div>
+    <div className="text-black bg-gray-400 flex w-1000px">
+      <div>
+        <div className="flex items-center border rounded-lg p-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="flex-1 px-2 py-1 focus:outline-none"
+          />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2 hover:bg-blue-600">
+            Search
+          </button>
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center space-x-4">
+          <span className="text-gray-600">Sort by:</span>
+          <select className="border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300">
+            <option value="latest">Latest</option>
+            <option value="popular">Popular</option>
+            <option value="alphabetical">Alphabetical</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
