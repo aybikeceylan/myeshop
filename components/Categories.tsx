@@ -1,6 +1,6 @@
 "use client";
 import { getCategory, setChoosen } from "@/app/redux/features/categorySlice";
-import { getFilter } from "@/app/redux/features/filterSlice";
+import { setFilterList, setProduct } from "@/app/redux/features/productSlice";
 import { RootState } from "@/app/redux/store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import React, { useEffect } from "react";
@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 const Categories = () => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { categoryList } = useSelector((state: RootState) => state.category);
+  const { productList, filterList } = useSelector(
+    (state: RootState) => state.product
+  );
 
   console.log("category component");
 
@@ -19,7 +22,12 @@ const Categories = () => {
 
   const handleCategory = (category: any) => {
     dispatch(setChoosen(category));
-    dispatch(getFilter());
+
+    dispatch(
+      setFilterList([
+        ...productList.filter((product: any) => product.category == category),
+      ])
+    );
   };
 
   return (

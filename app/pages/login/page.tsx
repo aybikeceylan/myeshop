@@ -51,7 +51,13 @@ const Login = (props: Props) => {
     <>
       {isloading && <Loading />}
       <div className="flex justify-evenly mt-10">
-        <Image src={LoginPic} alt="login" width={400} height={500} />
+        <Image
+          src={LoginPic}
+          alt="login"
+          width={400}
+          height={500}
+          priority={true}
+        />
         <div className="bg-white  border-gray-500 shadow-xl">
           <h2 className="text-center text-orange-500 font-semibold text-3xl p-1">
             Login

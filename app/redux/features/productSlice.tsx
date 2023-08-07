@@ -3,7 +3,7 @@ import axios from "axios";
 
 interface initialState {
   productList: Array<any>;
-  finalList: Array<any>;
+  filterList: Array<any>;
   sortingList: Array<any>;
   loading: boolean;
   error: any;
@@ -11,7 +11,7 @@ interface initialState {
 
 const initialState = {
   productList: [],
-  finalList: [],
+  filterList: [],
   sortingList: [],
   loading: false,
   error: false,
@@ -40,8 +40,8 @@ const productSlice = createSlice({
     setProduct: (state, { payload }) => {
       state.productList = payload;
     },
-    setFinalList: (state, { payload }) => {
-      state.finalList = payload;
+    setFilterList: (state, { payload }) => {
+      state.filterList = payload;
     },
     setSortingList: (state, { payload }) => {
       state.sortingList = payload;
@@ -65,7 +65,7 @@ const productSlice = createSlice({
   },
 });
 
-export const { setProduct, setFinalList, setSortingList } =
+export const { setProduct, setFilterList, setSortingList } =
   productSlice.actions;
 
 export default productSlice.reducer;
