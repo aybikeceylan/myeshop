@@ -12,8 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Home() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { productList } = useSelector((state: RootState) => state.product);
-
-  // console.log("page component");
+  const filteredList = useSelector((state: RootState) => state.filter);
+  console.log("filteredList", filteredList);
+  console.log("page component");
 
   useEffect(() => {
     dispatch(getProduct());

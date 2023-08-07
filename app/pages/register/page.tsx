@@ -94,7 +94,13 @@ const Login = (props: Props) => {
             <Link href="/pages/login">Login</Link>
           </span>
         </div>
-        <Image src={RegisterPic} alt="login" width={400} height={500} />
+        <Image
+          src={RegisterPic}
+          alt="login"
+          width={400}
+          height={500}
+          priority={true}
+        />
       </div>
     </>
   );

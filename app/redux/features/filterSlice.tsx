@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { store } from "../store";
 
@@ -18,13 +18,11 @@ const initialState = {
 
 export const getFilter = createAsyncThunk(
   "getFilter", //! action types
-
   async (thunkAPI, { rejectWithValue }) => {
     const selected = store.getState().category.choosen;
     console.log(selected);
     //! asyn callback function
     const url = `https://fakestoreapi.com/products/category/${selected}`;
-
     try {
       const { data } = await axios(url);
       console.log(data);
@@ -42,10 +40,6 @@ const filterSlice = createSlice({
     setFind: (state, { payload }) => {
       state.find = payload;
     },
-    setFilteredList: (state, { payload }) => {
-      state.filteredList = payload;
-      console.log(state.filteredList);
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,15 +48,17 @@ const filterSlice = createSlice({
       })
       .addCase(getFilter.fulfilled, (state, { payload }) => {
         state.filteredList = payload;
+        console.log(payload);
         state.loadingFilter = false;
       })
       .addCase(getFilter.rejected, (state, { payload }) => {
         state.loadingFilter = false;
-        // @ts-ignore
+        //@ts-ignore
         state.errorFilter = payload;
       });
   },
 });
+
 export const { setFind } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -29,6 +29,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
         width={175}
         height={175}
         className="h-52"
+        priority={true}
       />
       <div className="font-bold text-orange-500 text-center h-5">
         {item?.price}TL
