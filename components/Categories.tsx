@@ -29,7 +29,9 @@ const Categories = () => {
       ])
     );
   };
-
+  const handleClear = () => {
+    dispatch(setFilterList(""));
+  };
   return (
     <div className="text-black">
       <div className="flex flex-col items-center ">
@@ -47,7 +49,10 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <button className="bg-orange-500 rounded-md p-2 w-full h-10">
+      <button
+        className="bg-orange-500 rounded-md p-2 w-full h-10"
+        onClick={handleClear}
+      >
         Clear Filters
       </button>
     </div>
