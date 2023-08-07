@@ -1,8 +1,6 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { useDispatch } from "react-redux"; // Removed unnecessary import
-import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "@/app/redux/store";
 
 interface CardProps {
   item: {
@@ -14,8 +12,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ item, index }) => {
-  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-
+  const router = useRouter();
   console.log("card component");
 
   return (
@@ -30,6 +27,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
         height={175}
         className="h-52"
         priority={true}
+        onClick={() => router.push("/pages/productDetails")}
       />
       <div className="font-bold text-orange-500 text-center h-5">
         {item?.price}TL

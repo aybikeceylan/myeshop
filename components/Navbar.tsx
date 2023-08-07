@@ -118,10 +118,10 @@ const Navbar = (props: Props) => {
           Register
         </Link>
         <Link
-          href="/pages/chart"
+          href="/pages/cart"
           className="hover:bg-amber-300 p-2 rounded-md flex"
         >
-          Chart
+          Cart
           <FaShoppingCart size={15} />
           <p>0</p>
         </Link>
