@@ -7,13 +7,13 @@ interface CardProps {
     image: any;
     title: any;
     price: any;
+    id?: any;
   };
   index: number;
 }
 
 const Card: React.FC<CardProps> = ({ item, index }) => {
   const router = useRouter();
-  console.log("card component");
 
   return (
     <div
@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
         height={175}
         className="h-52"
         priority={true}
-        onClick={() => router.push("/pages/productDetails")}
+        onClick={() => router.push(`/pages/productDetails/${item.id}`)}
       />
       <div className="font-bold text-orange-500 text-center h-5">
         {item?.price}TL
