@@ -9,6 +9,8 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 const Slug = () => {
+  const router = useRouter();
+
   interface Product {
     id: any | null;
     image: any | null;
@@ -59,7 +61,10 @@ const Slug = () => {
             <b>Rating</b>:{item?.rating?.rate}
           </p>
 
-          <button className="bg-orange-500 rounded-md p-2 w-44 h-10">
+          <button
+            className="bg-orange-500 rounded-md p-2 w-44 h-10"
+            onClick={() => router.push(`/pages/cart`)}
+          >
             Add to Cart
           </button>
         </div>

@@ -33,7 +33,10 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
         {item?.price}TL
       </div>
       <div className="text-xs h-14">{item?.title}</div>
-      <button className="bg-orange-500 rounded-md p-2 w-full h-10">
+      <button
+        className="bg-orange-500 rounded-md p-2 w-full h-10"
+        onClick={() => router.push(`/pages/cart`)}
+      >
         Add to Cart
       </button>
     </div>
