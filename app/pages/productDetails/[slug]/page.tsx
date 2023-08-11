@@ -1,12 +1,14 @@
 "use client";
+import { setCardCount, setCardItem } from "@/app/redux/features/cardSlice";
 import { RootState } from "@/app/redux/store";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 
 import React from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Slug = () => {
   const router = useRouter();
@@ -25,7 +27,15 @@ const Slug = () => {
   const { productList } = useSelector((state: RootState) => state.product);
   const params = useParams();
   const id = params.slug;
-  const item = productList.find((i: Product) => i.id == id);
+  const item: any = productList.find((i: Product) => i.id == id);
+
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+
+  const handleAdd = (item: any) => {
+    router.push(`/pages/cart`);
+    dispatch(setCardItem(item));
+    dispatch(setCardCount());
+  };
 
   console.log(item);
   console.log(id);
@@ -52,7 +62,12 @@ const Slug = () => {
         />
 
         <div className="text-black text-lg  ">
-          <h2 className="text-xl h-14 ">{item?.title}</h2>
+          <h2 className="text-xl h-14 ">
+            {
+              //@ts-ignore
+              item?.title
+            }
+          </h2>
           <p className="font-bold text-orange-500 text-left h-8 ">
             {item?.price}TL
           </p>
@@ -63,7 +78,7 @@ const Slug = () => {
 
           <button
             className="bg-orange-500 rounded-md p-2 w-44 h-10"
-            onClick={() => router.push(`/pages/cart`)}
+            onClick={() => handleAdd(item)}
           >
             Add to Cart
           </button>

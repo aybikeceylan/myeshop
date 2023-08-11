@@ -1,6 +1,10 @@
+import { setCardCount, setCardItem } from "@/app/redux/features/cardSlice";
+import { RootState } from "@/app/redux/store";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 interface CardProps {
   item: {
@@ -14,6 +18,14 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ item, index }) => {
   const router = useRouter();
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+
+  const handleAdd = (item: any) => {
+    router.push(`/pages/cart`);
+    console.log("ADD BUTTON");
+    dispatch(setCardItem(item));
+    dispatch(setCardCount());
+  };
 
   return (
     <div
@@ -35,7 +47,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
       <div className="text-xs h-14">{item?.title}</div>
       <button
         className="bg-orange-500 rounded-md p-2 w-full h-10"
-        onClick={() => router.push(`/pages/cart`)}
+        onClick={() => handleAdd(item)}
       >
         Add to Cart
       </button>

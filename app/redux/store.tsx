@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
 import productReducer from "./features/productSlice";
 import categoryReducer from "./features/categorySlice";
+import cardReducer from "./features/cardSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     auth: authReducer,
     product: productReducer,
     category: categoryReducer,
+    card: cardReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
