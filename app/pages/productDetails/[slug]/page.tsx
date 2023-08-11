@@ -1,5 +1,5 @@
 "use client";
-import { setCardCount, setCardItem } from "@/app/redux/features/cardSlice";
+import { setCartCount, setCartItem } from "@/app/redux/features/cartSlice";
 import { RootState } from "@/app/redux/store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
@@ -32,9 +32,8 @@ const Slug = () => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 
   const handleAdd = (item: any) => {
-    router.push(`/pages/cart`);
-    dispatch(setCardItem(item));
-    dispatch(setCardCount());
+    dispatch(setCartItem(item));
+    dispatch(setCartCount());
   };
 
   console.log(item);

@@ -1,4 +1,4 @@
-import { setCardCount, setCardItem } from "@/app/redux/features/cardSlice";
+import { setCartCount, setCartItem } from "@/app/redux/features/cartSlice";
 import { RootState } from "@/app/redux/store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
@@ -21,10 +21,8 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 
   const handleAdd = (item: any) => {
-    router.push(`/pages/cart`);
-    console.log("ADD BUTTON");
-    dispatch(setCardItem(item));
-    dispatch(setCardCount());
+    dispatch(setCartItem(item));
+    dispatch(setCartCount());
   };
 
   return (

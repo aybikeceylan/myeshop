@@ -20,7 +20,7 @@ const Navbar = (props: Props) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { cardCount } = useSelector((state: RootState) => state.card);
+  const { cartCount } = useSelector((state: RootState) => state.cart);
 
   console.log("Navbar rendered");
   useEffect(() => {
@@ -127,7 +127,7 @@ const Navbar = (props: Props) => {
         >
           Cart
           <FaShoppingCart size={15} />
-          <p>{cardCount}</p>
+          <p>{cartCount}</p>
         </Link>
       </div>
     </nav>
