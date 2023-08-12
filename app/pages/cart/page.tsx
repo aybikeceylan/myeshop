@@ -26,7 +26,7 @@ const Cart = (props: Props) => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { cartCount } = useSelector((state: RootState) => state.cart);
 
-  let filteredArr = cartItem?.reduce((acc, current) => {
+  let filteredArr = cartItem?.reduce((acc: any, current: any) => {
     //@ts-ignore
     const x = acc?.find((item) => item.id === current.id);
     if (!x) {
@@ -47,7 +47,7 @@ const Cart = (props: Props) => {
     dispatch(setCartCount());
   };
   const handleDecrease = (item: any) => {
-    let index = cartItem?.findIndex((i) => i === item);
+    let index = cartItem?.findIndex((i: any) => i === item);
     let arrayforchange = [...cartItem];
     arrayforchange.splice(index, 1);
     dispatch(setCartDecrease(arrayforchange));
