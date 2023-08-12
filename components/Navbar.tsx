@@ -21,6 +21,7 @@ const Navbar = (props: Props) => {
   const router = useRouter();
 
   const { cartCount } = useSelector((state: RootState) => state.cart);
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
 
   console.log("Navbar rendered");
   useEffect(() => {
@@ -105,22 +106,32 @@ const Navbar = (props: Props) => {
         >
           My Orders
         </Link>
-        <Link
-          href="/"
-          className="hover:bg-amber-300 p-2 rounded-md"
-          onClick={logoutUser}
-        >
-          LogOut
-        </Link>
-        <Link href="/pages/login" className="hover:bg-amber-300 p-2 rounded-md">
-          Login
-        </Link>
-        <Link
-          href="/pages/register"
-          className="hover:bg-amber-300 p-2 rounded-md"
-        >
-          Register
-        </Link>
+
+        {isLoggedIn ? (
+          <Link
+            href="/"
+            className="hover:bg-amber-300 p-2 rounded-md"
+            onClick={logoutUser}
+          >
+            LogOut
+          </Link>
+        ) : (
+          <>
+            <Link
+              href="/pages/login"
+              className="hover:bg-amber-300 p-2 rounded-md"
+            >
+              Login
+            </Link>
+            <Link
+              href="/pages/register"
+              className="hover:bg-amber-300 p-2 rounded-md"
+            >
+              Register
+            </Link>
+          </>
+        )}
+
         <Link
           href="/pages/cart"
           className="hover:bg-amber-300 p-2 rounded-md flex"
