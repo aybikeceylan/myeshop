@@ -10,6 +10,7 @@ import { RootState } from "@/app/redux/store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import { FaArrowCircleLeft, FaMinus, FaPlus, FaTrash } from "react-icons/fa";
@@ -19,12 +20,11 @@ type Props = {
   cardItem: any;
 };
 
-// ... Diğer import ve bileşenler
-
 const Cart = (props: Props) => {
   const { cartItem } = useSelector((state: RootState) => state.cart);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { cartCount } = useSelector((state: RootState) => state.cart);
+  const router = useRouter();
 
   let filteredArr = cartItem?.reduce((acc: any, current: any) => {
     //@ts-ignore
@@ -158,7 +158,10 @@ const Cart = (props: Props) => {
 
             <div className="mt-5">
               <p>Taxes and Shipping calculated at checkout</p>
-              <button className="bg-orange-500 rounded-md p-2 w-full h-10">
+              <button
+                className="bg-orange-500 rounded-md p-2 w-full h-10"
+                onClick={() => router.push(`/pages/checkout`)}
+              >
                 CheckOut
               </button>
             </div>
