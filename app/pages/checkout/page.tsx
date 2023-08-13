@@ -14,7 +14,7 @@ const Checkout = (props: Props) => {
   const router = useRouter();
 
   const handleOrder = () => {
-    router.push(`/pages/orderDetails`);
+    router.push(`/pages/checkoutSuccess`);
     dispatch(clearAll());
   };
   return (
