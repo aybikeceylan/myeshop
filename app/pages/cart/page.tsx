@@ -16,11 +16,7 @@ import React from "react";
 import { FaArrowCircleLeft, FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
-type Props = {
-  cardItem: any;
-};
-
-const Cart = (props: Props) => {
+const Cart = () => {
   const { cartItem } = useSelector((state: RootState) => state.cart);
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { cartCount } = useSelector((state: RootState) => state.cart);
