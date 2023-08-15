@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 interface CardProps {
   item: {
@@ -23,6 +24,7 @@ const Card: React.FC<CardProps> = ({ item, index }) => {
   const handleAdd = (item: any) => {
     dispatch(setCartItem(item));
     dispatch(setCartCount());
+    toast.success("Added to Cart");
   };
 
   return (

@@ -5,6 +5,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 import React from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
@@ -34,6 +35,7 @@ const Slug = () => {
   const handleAdd = (item: any) => {
     dispatch(setCartItem(item));
     dispatch(setCartCount());
+    toast.success("Added to Cart");
   };
 
   console.log(item);
