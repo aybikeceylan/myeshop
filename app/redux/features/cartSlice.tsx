@@ -4,18 +4,15 @@ type initialState = {
   cartItem: any;
   cartCount: any;
 };
-console.log("window", window);
-console.log(" type of window", typeof window);
+
 const initialState = {
   cartItem:
-    (typeof window !== "undefined" && //@ts-ignore
-      JSON.parse(localStorage.getItem("cart"))) ||
-    [],
+    typeof window !== "undefined" && //@ts-ignore
+    (JSON.parse(localStorage.getItem("cart")) || []),
 
   cartCount:
-    (typeof window !== "undefined" && //@ts-ignore
-      JSON.parse(localStorage.getItem("cartCount"))) ||
-    0,
+    typeof window !== "undefined" && //@ts-ignore
+    (JSON.parse(localStorage.getItem("cartCount")) || 0),
 };
 
 const cartSlice = createSlice({
