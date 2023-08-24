@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type initialState = {
-  cartItem: Array<any>;
-  cartCount: string;
+  cartItem: any;
+  cartCount: any;
 };
-
+console.log("window", window);
+console.log(" type of window", typeof window);
 const initialState = {
   cartItem:
-    //@ts-ignore
-    JSON.parse(localStorage.getItem("cart")) || [],
-  //@ts-ignore
-  cartCount: JSON.parse(localStorage.getItem("cartCount")) || 0,
+    (typeof window !== "undefined" && //@ts-ignore
+      JSON.parse(localStorage.getItem("cart"))) ||
+    [],
+
+  cartCount:
+    (typeof window !== "undefined" && //@ts-ignore
+      JSON.parse(localStorage.getItem("cartCount"))) ||
+    0,
 };
 
 const cartSlice = createSlice({
