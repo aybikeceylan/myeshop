@@ -32,16 +32,16 @@ export default function Home() {
   useEffect(() => {
     dispatch(getProduct());
     //@ts-ignore
-    if (JSON.parse(localStorage.getItem("cart"))) {
-      // dispatch(
-      //   //@ts-ignore
-      //   setFirstRenderCartItem(...JSON.parse(localStorage.getItem("cart")))
-      // );
-      // dispatch(
-      //   //@ts-ignore
-      //   setFirstRenderCartCount(JSON.parse(localStorage.getItem("cartCount")))
-      // );
-    }
+    // if (JSON.parse(localStorage.getItem("cart"))) {
+    //   dispatch(
+    //     //@ts-ignore
+    //     setFirstRenderCartItem(...JSON.parse(localStorage.getItem("cart")))
+    //   );
+    //   dispatch(
+    //     //@ts-ignore
+    //     setFirstRenderCartCount(JSON.parse(localStorage.getItem("cartCount")))
+    //   );
+    // }
   }, [dispatch]);
 
   console.log("cardItem", cartItem);
