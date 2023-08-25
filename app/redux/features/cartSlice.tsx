@@ -6,13 +6,9 @@ type initialState = {
 };
 
 const initialState = {
-  cartItem:
-    typeof window !== "undefined" && //@ts-ignore
-    (JSON.parse(localStorage.getItem("cart")) || []),
+  cartItem: [],
 
-  cartCount:
-    typeof window !== "undefined" && //@ts-ignore
-    (JSON.parse(localStorage.getItem("cartCount")) || 0),
+  cartCount: 0,
 };
 
 const cartSlice = createSlice({
@@ -34,6 +30,17 @@ const cartSlice = createSlice({
 
       //@ts-ignore
       localStorage.setItem("cartCount", JSON.stringify(state.cartCount));
+    },
+    setFirstRenderCartItem: (state, { payload }) => {
+      //@ts-ignore
+      state.cartItem = [...state.cartItem, payload];
+      console.log("cartItem", payload);
+    },
+    setFirstRenderCartCount: (state) => {
+      //@ts-ignore
+
+      state.cartCount = state.cartItem.length;
+      console.log("cartCount", state.cartItem.length);
     },
 
     removeItemFromCart: (state, { payload }) => {
@@ -75,6 +82,8 @@ export const {
   removeItemFromCart,
   clearAll,
   setCartDecrease,
+  setFirstRenderCartCount,
+  setFirstRenderCartItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
