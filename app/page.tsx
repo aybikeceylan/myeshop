@@ -8,6 +8,10 @@ import SearchBar from "@/components/SearchBar";
 import React from "react";
 import { getProduct, setProduct } from "./redux/features/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  setFirstRenderCartCount,
+  setFirstRenderCartItem,
+} from "./redux/features/cartSlice";
 
 export default function Home() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -15,15 +19,32 @@ export default function Home() {
     (state: RootState) => state.product
   );
 
-  const category = useSelector((state: RootState) => state.category);
+  const cartItem = useSelector((state: RootState) => state.cart);
   console.log("productList", productList);
   console.log("filterList", filterList);
 
   console.log("page component");
+  // //@ts-ignore
+  // console.log("cartItem", JSON.parse(localStorage.getItem("cart")));
+  // //@ts-ignore
+  // console.log("cartCount", JSON.parse(localStorage.getItem("cartCount")));
 
   useEffect(() => {
     dispatch(getProduct());
+    //@ts-ignore
+    if (JSON.parse(localStorage.getItem("cart"))) {
+      // dispatch(
+      //   //@ts-ignore
+      //   setFirstRenderCartItem(...JSON.parse(localStorage.getItem("cart")))
+      // );
+      // dispatch(
+      //   //@ts-ignore
+      //   setFirstRenderCartCount(JSON.parse(localStorage.getItem("cartCount")))
+      // );
+    }
   }, [dispatch]);
+
+  console.log("cardItem", cartItem);
   return (
     <div className="m-5 flex  ">
       <div className="w-1/5 mr-5">
