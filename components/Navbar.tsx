@@ -25,7 +25,7 @@ const Navbar = (props: Props) => {
 
   console.log("Navbar rendered");
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user:any) => {
       interface user {
         email: string | null | undefined;
         displayName: string;
