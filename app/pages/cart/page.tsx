@@ -21,6 +21,7 @@ const Cart = () => {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const { cartCount } = useSelector((state: RootState) => state.cart);
   const router = useRouter();
+  console.log(cartItem)
 
   let filteredArr = cartItem?.reduce((acc: any, current: any) => {
     //@ts-ignore
